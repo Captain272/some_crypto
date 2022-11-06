@@ -1,0 +1,58 @@
+Homework 3: Cryptography
+
+Due on Nov 4 at 11:59pm
+Grading Rubric: Q0 is worth 5 points. Q1-Q7 are worth 15 points each. 
+Total: 110 points (the actual grade will not exceed 100 points).
+Submission Guide: You must submit the homework assignment (DOCX or PDF) and all the created code and executables.  
+For this homework, use the same virtual machine (VM) as for your project.
+
+IMPORTANT NOTE: Before starting this assignment, you must customize your command prompt as described in the Command Prompt Customization Manual. 
+This customization manual directs you to place your EUID (Enterprise User ID) into the command prompt. Submissions which do not comply with this requirement will receive no credit.
+Introduction
+In this homework, you will write programs which perform public-key encryption and compute cryptographic checksums (keyless and keyed). You may use any programming language in this assignment. We recommend you choose the same one as for the project “Ransomware”. 
+Some of the components created in this homework may be re-purposed for your project.
+Section 1: Public-key encryption
+
+1. Create a directory “hw3”. Download a file “sensitive.txt” from the assignment page and copy it into the directory “hw3”.
+2. Write a program “generate_keys”. This program will randomly generate a pair of 3072-bit RSA keys and then it will save the public key into a file “pub_key” and the private key into a file “priv_key”.
+Q0: What programming language did you use? What cryptographic library did you use?
+In the terminal window, run the program “generate_keys”. Then, display the files “pub_key” and “priv_key” using the “hexdump” command.
+Q1: Attach a screenshot of the result.
+3. Write a program “encrypt_file”. This program will encrypt a file “sensitive.txt” in the directory “hw3” on the key “pub_key”. The key will be read from the file “pub_key”. The encrypted file will overwrite the original file “sensitive.txt”.
+Make sure that the original (unencrypted) file “sensitive.txt” is placed into the directory “hw3”. In the terminal window, display the first 100 bytes of the original (unencrypted) file “sensitive.txt” using the “head” command. Run the program “encrypt_file”. Display the first 100 bytes of the encrypted file “sensitive.txt” using the “hexdump” command.
+Q2: Attach a screenshot(s) of the result. Make sure that both original (unencrypted) and encrypted versions of the file are displayed on the screenshots.
+4. Write a program “decrypt_file”. This program will decrypt the file “sensitive.txt” in the directory “hw3” using the key “priv_key”. The key will be read from the file “priv_key”. The decrypted file will overwrite the encrypted file “sensitive.txt”.
+Make sure that the encrypted file “sensitive.txt” is in the directory “hw3”. In the terminal window, display the first 100 bytes of the encrypted file “sensitive.txt” using the “hexdump” command. Run the program “decrypt_file”. Display the first 100 bytes of the decrypted file “sensitive.txt” using the “head” command.
+Q3: Attach a screenshot(s) of the result. Make sure that both encrypted and decrypted versions of the file are displayed on the screenshots.
+5. Write a program “compute_checksum” which computes a keyless cryptographic checksum of a file “sensitive.txt”. You will use a hash function SHA256 compute it. 
+The checksum will be written into a file “sensitive_checksum.txt”—this file should be in the text format.
+Copy the original (unencrypted) file “sensitive.txt” into the directory “hw3”.
+In the terminal window, run the program “compute_checksum”. Display the checksum:
+cat sensitive_checksum.txt 
+Q4: Attach a screenshot of the result. 
+6. Write a program “verify_checksum” which works as follows: it computes a checksum of “sensitive.txt” and compares it with the contents of “sensitive_checksum.txt”. 
+If the resulting hash values are the same, then the program outputs “Accept!” and otherwise it outputs “Reject!”.
+In the terminal window, run the program “verify_checksum”. (Observe the result.)
+Change the first symbol in “sensitive.txt” to a different symbol, and save the file.
+Come back to the terminal window and run the program “verify_checksum”. 
+(Observe the result.)
+Q5: Attach a screenshot of the result.
+7. Write a program “compute_keyed_checksum” which works similarly to the one in Step 4, but instead of SHA256, you will use the keyed hash function HMAC-SHA256. A 256-bit key will be read from the file “key.bin”. The checksum will be written into a file “sensitive_keyed_checksum.txt”—this file should be in the text format.
+Generate a random key:
+head -c 256 /dev/urandom > key.bin
+Copy the original (unencrypted) file “sensitive.txt” into the directory “hw3”.
+In the terminal window, run the program “compute_keyed_checksum”. Display the checksum:
+cat sensitive_keyed_checksum.txt
+Q6: Attach a screenshot of the result.
+8. Write a program “verify_keyed_checksum” which works as follows: 
+it computes a keyed checksum of “sensitive.txt” using HMAC-SHA256 and compares it with the contents of “sensitive_keyed_checksum.txt”. If the resulting values are the same, then the program outputs “Accept!” and otherwise it outputs “Reject!”.
+In the terminal window, run the program “verify_keyed_checksum”. (Observe the result.)
+Change the first symbol in “sensitive.txt” to a different symbol, and save the file.
+Come back to the terminal window and run the program “verify_checksum”. 
+(Observe the result.)
+Q7: Attach a screenshot of the result. 
+Student Name:
+Course: CSCE 5550
+Semester: Fall 2022
+	Homework 3: Cryptography
+
